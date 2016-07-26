@@ -11,7 +11,7 @@
 #import "TSBlurView.h"
 #import "TSMessage.h"
 
-#define TSMessageViewMinimumPadding 15.0
+#define TSMessageViewMinimumPadding 5.0
 
 #define TSDesignFileName @"TSMessagesDefaultDesign"
 
@@ -268,7 +268,7 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
             // On iOS 7 and above use a blur layer instead (not yet finished)
             _backgroundBlurView = [[TSBlurView alloc] init];
             self.backgroundBlurView.autoresizingMask = (UIViewAutoresizingFlexibleWidth);
-            self.backgroundBlurView.blurTintColor = [UIColor colorWithHexString:current[@"backgroundColor"]];
+            self.backgroundBlurView.blurTintColor =  [UIColor whiteColor];//[UIColor colorWithHexString:current[@"backgroundColor"]];
             [self addSubview:self.backgroundBlurView];
         }
 
@@ -334,6 +334,8 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
                                                   image.size.width,
                                                   image.size.height);
             [self addSubview:self.iconImageView];
+            self.iconImageView.layer.cornerRadius = 6;
+            self.iconImageView.clipsToBounds = YES;
         }
 
         // Set up button (if set)
